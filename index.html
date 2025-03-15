@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Parabéns Turma B</title>
+        <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background: linear-gradient(45deg, #00bcd4, #00acc1);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #birthdayContent {
+            display: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 5px 5px 20px rgba(255, 255, 255, 1); }
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50%;
+            box-shadow: inset -5px -10px rgba(0, 0, 0, 0.2);
+            animation: floatUp 5s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-120vh); opacity: 0; }
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #e91e63;
+        }
+        </style>
+    </head>
+
+    <body>
+        <button id="startButton">Aperte aqui!</button>
+
+        <div id="birthdayContent">
+            <h1>🎉 Parabéns, Giovanna! 🎂</h1>
+        </div>
+
+        <script>
+        const startButton = document.getElementById("startButton");
+        const birthdayContent = document.getElementById("birthdayContent");
+
+        function createBalloon() {
+            const balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+            document.body.appendChild(balloon);
+            
+            balloon.style.left = `${Math.random() * 100}vw`;
+            balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+            balloon.style.animationDuration = `${3 + Math.random() * 3}s`;
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 5000);
+        }
+
+        function startCelebration() {
+            startButton.style.display = "none";
+            birthdayContent.style.display = "block";
+
+            setInterval(createBalloon, 500);
+        }
+
+        startButton.addEventListener("click", startCelebration);
+        </script>
+    </body>
+</html>
