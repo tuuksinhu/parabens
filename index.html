@@ -71,7 +71,10 @@
         <button id="startButton">Aperte aqui!</button>
 
         <div id="birthdayContent">
-            <h1>Parabéns Lara Matos!</h1>
+            <h1>Parabéns atrasado:
+            João Francisco,
+            Letícia
+            </h1>
         </div>
 
         <script>
@@ -82,7 +85,7 @@
             const balloon = document.createElement("div");
             balloon.classList.add("balloon");
             document.body.appendChild(balloon);
-            
+
             balloon.style.left = `${Math.random() * 100}vw`;
             balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
             balloon.style.animationDuration = `${3 + Math.random() * 3}s`;
